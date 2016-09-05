@@ -1,4 +1,7 @@
-'use strict';
 
-// Define the `core` module
-angular.module('core', ['core.phone']);
+import angular from 'angular';
+
+import './phone/phone.service.js';
+
+export default angular.
+	module('core', ['core.phone']);

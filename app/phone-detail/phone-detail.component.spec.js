@@ -1,36 +1,39 @@
-'use strict';
+
+import 'angular';
+import 'angular-mocks/angular-mocks';
+import './phone-detail.component.js';
 
 describe('phoneDetail', function() {
 
   // Load the module that contains the `phoneDetail` component before each test
-  beforeEach(module('phoneDetail'));
+    beforeEach(module('phoneDetail'));
 
   // Test the controller
-  describe('PhoneDetailController', function() {
-    var $httpBackend, ctrl;
-    var xyzPhoneData = {
-      name: 'phone xyz',
-      images: ['image/url1.png', 'image/url2.png']
-    };
+    describe('PhoneDetailController', function() {
+        var $httpBackend, ctrl;
+        var xyzPhoneData = {
+            name: 'phone xyz',
+            images: ['image/url1.png', 'image/url2.png']
+        };
 
-    beforeEach(inject(function($componentController, _$httpBackend_, $routeParams) {
-      $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData);
+        beforeEach(inject(function($componentController, _$httpBackend_, $routeParams) {
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData);
 
-      $routeParams.phoneId = 'xyz';
+            $routeParams.phoneId = 'xyz';
 
-      ctrl = $componentController('phoneDetail');
-    }));
+            ctrl = $componentController('phoneDetail');
+        }));
 
-    it('should fetch the phone details', function() {
-      jasmine.addCustomEqualityTester(angular.equals);
+        it('should fetch the phone details', function() {
+            jasmine.addCustomEqualityTester(angular.equals);
 
-      expect(ctrl.phone).toEqual({});
+            expect(ctrl.phone).toEqual({});
 
-      $httpBackend.flush();
-      expect(ctrl.phone).toEqual(xyzPhoneData);
+            $httpBackend.flush();
+            expect(ctrl.phone).toEqual(xyzPhoneData);
+        });
+
     });
-
-  });
 
 });

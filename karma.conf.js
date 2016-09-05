@@ -5,16 +5,14 @@ module.exports = function(config) {
     basePath: './app',
 
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      '**/*.module.js',
-      '*!(.module|.spec).js',
-      '!(bower_components)/**/*!(.module|.spec).js',
-      '**/*.spec.js'
+      'main.karma.js'
     ],
+
+    preprocessors: {
+      // Reference: http://webpack.github.io/docs/testing.html
+      // Reference: https://github.com/webpack/karma-webpack
+      'main.karma.js': ['webpack', 'sourcemap']
+    },
 
     autoWatch: true,
 
@@ -25,7 +23,22 @@ module.exports = function(config) {
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-sourcemap-loader',
+      'karma-spec-reporter',
+      'karma-webpack'
+    ]
+
+    ,webpack: require('./webpack.config')
+
+    // Hide webpack build information from output
+    ,webpackMiddleware: {
+      noInfo: 'errors-only'
+    }
+
+    ,reporters: [
+      // Reference: https://github.com/mlex/karma-spec-reporter
+      'progress'
     ]
 
   });

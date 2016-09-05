@@ -1,7 +1,12 @@
-'use strict';
 
-// Define the `phoneDetail` module
-angular.module('phoneDetail', [
-  'ngRoute',
-  'core.phone'
-]);
+import angular from 'angular';
+import ngRoute from 'angular-route';
+
+import '../core/phone/phone.service.js';
+import './phone-detail.component.js';
+
+angular.
+  module('phoneDetail', [
+      ngRoute
+      ,'core.phone'
+  ]);
