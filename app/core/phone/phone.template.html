@@ -1,0 +1,7 @@
+<li>
+  <a href="#!/phones/{{$ctrl.phone.id}}" class="thumb">
+    <img ng-src="{{$ctrl.phone.imageUrl}}" alt="{{$ctrl.phone.name}}" />
+  </a>
+  <input-field field-value="$ctrl.phone.name" field-type="text" on-update="$ctrl.update('name', value)"></input-field>
+  <p>{{$ctrl.phone.snippet}}</p>
+</li>
