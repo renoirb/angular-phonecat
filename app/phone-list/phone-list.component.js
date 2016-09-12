@@ -9,6 +9,9 @@ angular.
       function PhoneListController(Phone) {
         this.phones = Phone.query();
         this.orderProp = 'age';
+        this.updatePhone = function updatePhone(phone, prop, val) {
+          phone[prop] = val;
+        }
       }
     ]
   });
